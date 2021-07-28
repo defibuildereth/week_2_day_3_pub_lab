@@ -23,9 +23,15 @@ class Pub:
                 return drink
         return False
 
+    def check_fit_for_sale(self, customer):
+        if customer.age >= 18 and customer.drunkenness <= self.max_drunkenness:
+            return True
+        else:
+            return False
+
     def sell_drink(self, customer, order):
         drink = self.check_stock(order)
-        if drink and customer.can_afford(drink) and customer.age >= 18 and customer.drunkenness <= self.max_drunkenness:
+        if drink and customer.can_afford(drink) and self.check_fit_for_sale(customer):
             self.remove_drink(drink)
             customer.add_drink(drink)
             self.add_money(drink.price)

@@ -19,6 +19,8 @@ class TestPub(unittest.TestCase):
         # 500 sickles - 17 sickles in a galleon
         self.pub = Pub("The Leaky Cauldron", 500, self.drink_list)
         self.customer = Customer("Harry Potter", 200, 26)
+        self.customer_2 = Customer("Luna Lovegood", 1, 17)
+
 
     def test_pub_has_name(self):
         self.assertEqual("The Leaky Cauldron", self.pub.name)
@@ -38,6 +40,14 @@ class TestPub(unittest.TestCase):
     def test_add_money(self):
         self.pub.add_money(self.drink_1.price)
         self.assertEqual(502, self.pub.till)
+
+    def test_check_fit_for_sale_True(self):
+        self.assertEqual(True, self.pub.check_fit_for_sale(self.customer))
+
+
+    def test_check_fit_for_sale_False(self):        
+        self.assertEqual(False, self.pub.check_fit_for_sale(self.customer_2))
+        
 
     def test_sell_drink(self):
         self.pub.sell_drink(self.customer, 'Butter Beer')
