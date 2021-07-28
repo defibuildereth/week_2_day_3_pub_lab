@@ -23,11 +23,24 @@ class Pub:
                 return drink
         return False
 
+    def check_age(self,customer):
+        if customer.age >= 18:
+            return True
+        else:
+            return False 
+
+    def check_drunkenness(self, customer):
+        if customer.drunkenness <= self.max_drunkenness:
+            return True
+        else: 
+            return False
+
     def check_fit_for_sale(self, customer):
-        if customer.age >= 18 and customer.drunkenness <= self.max_drunkenness:
+        if self.check_age(customer) and self.check_drunkenness(customer):
             return True
         else:
             return False
+
 
     def sell_drink(self, customer, order):
         drink = self.check_stock(order)

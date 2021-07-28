@@ -66,6 +66,13 @@ class TestPub(unittest.TestCase):
         expected = self.pub.check_stock('Tennents')
         self.assertEqual(False, expected)
 
+    def test_check_age_True(self):
+        self.assertEqual(True, self.pub.check_age(self.customer_7))
+
+
+    def test_check_age_False(self):
+        self.assertEqual(False, self.pub.check_age(self.customer_8))
+
 
     def test_check_fit_for_sale(self):
         self.assertEqual(True, self.pub.check_fit_for_sale(self.customer))
