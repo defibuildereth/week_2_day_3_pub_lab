@@ -24,6 +24,20 @@ class TestCustomer(unittest.TestCase):
     def test_customer_has_age(self): 
         self.assertEqual(26, self.customer.age) 
 
+    def test_customer_has_hands(self):
+        self.assertEqual(list, type(self.customer.hands))
+
+    def test_customer_has_drunkenness(self):
+        self.assertEqual(0, self.customer.drunkenness)
+
+    def test_reduce_money(self):
+        self.customer.reduce_money(100)
+        self.assertEqual(100, self.customer.wallet)
+
+    def test_add_drink(self):
+        self.customer.add_drink(self.drink_2)
+        self.assertEqual(1, len(self.customer.hands))
+
 
     def test_can_afford_True(self):
         self.assertEqual(True, self.customer.can_afford(self.drink_1))
